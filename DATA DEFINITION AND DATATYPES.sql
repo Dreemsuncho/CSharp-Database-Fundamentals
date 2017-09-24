@@ -75,13 +75,13 @@ CREATE TABLE People (Id INT PRIMARY KEY IDENTITY,
                      Picture VARBINARY(MAX) CHECK (DATALENGTH(Picture) < 2048000),
                      Height DECIMAL(10, 2),
                      Weight DECIMAL(10, 2),
-					 Gender CHAR CHECK (Gender IN('m', 'f')) NOT NULL,
-					 Birthdate DATE NOT NULL,
-					 Biography NVARCHAR(MAX))
+                     Gender CHAR CHECK (Gender IN('m', 'f')) NOT NULL,
+                     Birthdate DATE NOT NULL,
+                     Biography NVARCHAR(MAX))
 
 INSERT INTO People (Picture, Height, Weight, Gender, Birthdate, Biography)
 	VALUES (1024, 190, 14, 'f', '1991/04/14', 'Strange bio!'),
-		   (2048, 1.90, 1.4, 'm', '1890/09/24', NULL),
-		   (4096, 0.190, 0.14, 'f', '9999/01/09', 'Random biography!'),
-		   (8192, 1900, 140, 'm', '0001/01/01', 'This is a bit longer biography'),
-		   (16384, 19000, 1400, 'f', '1000/10/10', NULL)
+           (2048, 1.90, 1.4, 'm', '1890/09/24', NULL),
+           (4096, 0.190, 0.14, 'f', '9999/01/09', 'Random biography!'),
+           (8192, 1900, 140, 'm', '0001/01/01', 'This is a bit longer biography'),
+           (16384, 19000, 1400, 'f', '1000/10/10', NULL)
