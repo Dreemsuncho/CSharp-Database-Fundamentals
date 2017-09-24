@@ -28,11 +28,11 @@ ALTER TABLE Minions
 -- Populate both tables with sample records given in the table below.
    |-------------------------------------|	
    | Minions                | Towns      |
-   | Id	Name	Age  TownId	| Id Name    |
+   | Id	Name	Age  TownId | Id Name    |
    |-------------------------------------|
-   | 1	Kevin   22   1	    | 1  Sofia	 |
-   | 2	Bob	    15   3	    | 2  Plovdiv |
-   | 3	Steward	NULL 2      | 3  Varna	 |
+   | 1  Kevin   22   1	    | 1  Sofia	 |
+   | 2  Bob     15   3      | 2  Plovdiv |
+   | 3  Steward	NULL 2      | 3  Varna	 |
    |-------------------------------------|
    Use only SQL queries. Submit your INSERT statements as Run skeleton, run queries & check DB.
 */
