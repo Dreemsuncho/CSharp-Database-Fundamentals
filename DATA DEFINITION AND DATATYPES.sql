@@ -80,8 +80,36 @@ CREATE TABLE People (Id INT PRIMARY KEY IDENTITY,
                      Biography NVARCHAR(MAX))
 
 INSERT INTO People (Picture, Height, Weight, Gender, Birthdate, Biography)
-	VALUES (1024, 190, 14, 'f', '1991/04/14', 'Strange bio!'),
+    VALUES (1024, 190, 14, 'f', '1991/04/14', 'Strange bio!'),
            (2048, 1.90, 1.4, 'm', '1890/09/24', NULL),
            (4096, 0.190, 0.14, 'f', '9999/01/09', 'Random biography!'),
            (8192, 1900, 140, 'm', '0001/01/01', 'This is a bit longer biography'),
            (16384, 19000, 1400, 'f', '1000/10/10', NULL)
+
+
+/* Problem 8 - Create Table Users.
+-- Using SQL query create table Users with columns:
+    • Id – unique number for every user. There will be no more than 263-1 users. (Auto incremented)
+    • Username – unique identifier of the user will be no more than 30 characters (non Unicode). (Required)
+    • Password – password will be no longer than 26 characters (non Unicode). (Required)
+    • ProfilePicture – image with size up to 900 KB. 
+    • LastLoginTime
+    • IsDeleted – shows if the user deleted his/her profile. Possible states are true or false.
+   Make Id primary key. Populate the table with exactly 5 records. Submit your CREATE and INSERT statements as Run queries & check DB.
+*/
+CREATE TABLE Users (Id BIGINT PRIMARY KEY IDENTITY CHECK (Id <	9223372036854775808 - 1),
+                    Username VARCHAR(30) UNIQUE NOT NULL,
+                    Password VARCHAR(26) NOT NULL,
+                    ProfilePicture VARBINARY CHECK (DATALENGTH(ProfilePicture) <= 900),
+                    LastLoginTime DATETIME,
+                    IsDeleted BIT NOT NULL)
+					
+INSERT INTO Users (Username, Password, ProfilePicture, LastLoginTime, IsDeleted)
+    VALUES ('Elvis', '123321', NULL, '2017/09/21 22:43:14', 0),
+           ('Go6o', 'Pass', 899, '2017/09/21 21:43:14', 1),
+		   ('Kiro', 'Pass123', 0, '2007/02/11 21:43:14', 0),
+           ('Gri6o', 'dasdas123asdasd', 900, '2011/11/11 01:23:14', 1),
+           ('Ti6o', '123das123', 900, '2021/12/21 02:33:44', 1)
+
+
+		   
