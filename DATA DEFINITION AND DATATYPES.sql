@@ -299,7 +299,104 @@ INSERT INTO Customers (DriverLicenceNumber, FullName, Address, City, ZIPCode, No
            (0123456, 'Customer name3', 'USA', 'NY', 10001, 'NY Note bro')
 
 INSERT INTO RentalOrders (EmployeeId, CustomerId, CarId, TankLevel, KilometrageStart, KilometrageEnd, TotalKilometrage, StartDate, EndDate, TotalDays, RateApplied, TaxRate, OrderStatus, Notes)
-VALUES (1 , 1 , 1 ,54 ,10 , 110, 100, GETDATE(), GETDATE() + 1, 1, 1.4, 44, 1, 'Just note'),
-       (2 , 2 , 2 ,44 ,20 , 110, 90, GETDATE(), GETDATE() + 2, 2, 2.4, 34, 0, 'Just note2'),
-       (3 , 3 , 3 ,34 ,30 , 110, 80, GETDATE(), GETDATE() + 3, 3, 3.4, 24, 0, 'Just note3')
+    VALUES (1 , 1 , 1 ,54 ,10 , 110, 100, GETDATE(), GETDATE() + 1, 1, 1.4, 44, 1, 'Just note'),
+           (2 , 2 , 2 ,44 ,20 , 110, 90, GETDATE(), GETDATE() + 2, 2, 2.4, 34, 0, 'Just note2'),
+           (3 , 3 , 3 ,34 ,30 , 110, 80, GETDATE(), GETDATE() + 3, 3, 3.4, 24, 0, 'Just note3')
 
+/* Problem 15 - Hotel Database.
+-- 
+*/
+CREATE DATABASE Hotel
+
+USE Hotel
+GO
+
+CREATE TABLE Employees (Id INT PRIMARY KEY IDENTITY,
+                        FirstName VARCHAR(50) NOT NULL,
+                        LastName VARCHAR(50) NOT NULL,
+                        Title VARCHAR(50) NOT NULL,
+						Notes TEXT)
+
+CREATE TABLE Customers (AccountNumber INT NOT NULL,
+                        FirstName VARCHAR(50) NOT NULL,
+                        LastName VARCHAR(50) NOT NULL, 
+                        PhoneNumber INT, 
+                        EmergencyName VARCHAR(50), 
+                        EmergencyNumber INT, 
+                        Notes TEXT)
+
+CREATE TABLE RoomStatus (RoomStatus BIT NOT NULL,
+                         Notes TEXT)
+
+CREATE TABLE RoomTypes (RoomType VARCHAR(50) NOT NULL,
+                        Notes TEXT)
+
+CREATE TABLE BedTypes (BedType VARCHAR(50) NOT NULL,
+                       Notes TEXT)
+
+CREATE TABLE Rooms (RoomNumber INT NOT NULL, 
+                    RoomType VARCHAR(50) NOT NULL, 
+                    BedType VARCHAR(50) NOT NULL, 
+                    Rate MONEY NOT NULL, 
+                    RoomStatus BIT NOT NULL, 
+                    Notes TEXT)
+
+CREATE TABLE Payments (Id INT PRIMARY KEY IDENTITY, 
+                       EmployeeId INT FOREIGN KEY(EmployeeId) REFERENCES Employees(Id), 
+                       PaymentDate DATE NOT NULL, 
+                       AccountNumber INT NOT NULL, 
+                       FirstDateOccupied DATE, 
+                       LastDateOccupied DATE, 
+                       TotalDays INT NOT NULL, 
+                       AmountCharged MONEY NOT NULL, 
+                       TaxRate MONEY NOT NULL, 
+                       TaxAmount MONEY NOT NULL, 
+                       PaymentTotal MONEY NOT NULL, 
+                       Notes TEXT)
+
+CREATE TABLE Occupancies (Id INT PRIMARY KEY IDENTITY, 
+                          EmployeeId INT FOREIGN KEY (EmployeeId) REFERENCES Employees(Id), 
+                          DateOccupied DATE NOT NULL, 
+                          AccountNumber INT NOT NULL, 
+                          RoomNumber INT NOT NULL, 
+                          RateApplied MONEY NOT NULL, 
+                          PhoneCharge MONEY NOT NULL DEFAULT 0, 
+                          Notes TEXT)
+
+INSERT INTO Employees (FirstName, LastName, Title, Notes)
+    VALUES ('Elvis', 'Arabadjiyski', 'El', 'Random'),
+           ('Presley', 'Arabadjiyski', 'Pl', 'Random'),
+           ('Grigorovich', 'Grigorovichev', 'Gr', 'Random')
+
+INSERT INTO Customers (AccountNumber, FirstName, LastName, PhoneNumber, EmergencyName, EmergencyNumber, Notes)
+    VALUES (1,'Elvis', 'Arabadjiyski', 0888989898, 'sos', 919, NULL),
+           (2,'Presley', 'Arabadjiyski', 0888989898, 'sos', 919, NULL),
+           (3,'Grigorovich', 'Grigorovichev', 0888989898, 'sos', 919, NULL)
+
+INSERT INTO RoomStatus (RoomStatus, Notes)
+    VALUES (1,NULL), (0,NULL), (0,NULL)
+
+INSERT INTO RoomTypes (RoomType, Notes)
+    VALUES ('Non type1', NULL),
+           ('Non type2', NULL),
+           ('Non type3', NULL)
+
+INSERT INTO BedTypes (BedType, Notes)
+    VALUES ('Non Type1', NULL),
+           ('Non Type2', NULL),
+           ('Non Type3', NULL)
+
+INSERT INTO Rooms (RoomNumber, RoomType, BedType, Rate, RoomStatus, Notes)
+    VALUES (1, 'Non Type1', 'Non Type1', 1.1, 0, NULL),
+           (2, 'Non Type2', 'Non Type2', 2.2, 1, NULL),
+           (2, 'Non Type2', 'Non Type3', 0.3, 1, NULL)
+
+INSERT INTO Payments (EmployeeId, PaymentDate, AccountNumber, FirstDateOccupied, LastDateOccupied, TotalDays, AmountCharged, TaxRate, TaxAmount, PaymentTotal, Notes)
+    VALUES (1, GETDATE(), 1, GETDATE(), GETDATE() + 1, 2, 0.2, 0.1, 3.3, 3.3, 'Note first'),
+           (2, GETDATE(), 2, GETDATE(), GETDATE() + 2, 1, 1.2, 1.1, 2.3, 2.3, 'Note second'),
+           (3, GETDATE(), 3, GETDATE(), GETDATE() + 3, 0, 2.2, 2.1, 1.3, 1.3, 'Note third')
+
+INSERT INTO Occupancies (EmployeeId, DateOccupied, AccountNumber, RoomNumber, RateApplied, PhoneCharge, Notes)
+    VALUES (1, GETDATE(), 1, 1, 0.3, 0.1, NULL),
+           (2, GETDATE(), 2, 2, 0.2, 0.2, NULL),
+           (3, GETDATE(), 3, 3, 0.1, 0.3, NULL)
