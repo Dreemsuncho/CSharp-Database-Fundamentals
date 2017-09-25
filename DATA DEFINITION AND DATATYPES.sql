@@ -303,8 +303,18 @@ INSERT INTO RentalOrders (EmployeeId, CustomerId, CarId, TankLevel, KilometrageS
            (2 , 2 , 2 ,44 ,20 , 110, 90, GETDATE(), GETDATE() + 2, 2, 2.4, 34, 0, 'Just note2'),
            (3 , 3 , 3 ,34 ,30 , 110, 80, GETDATE(), GETDATE() + 3, 3, 3.4, 24, 0, 'Just note3')
 
+
 /* Problem 15 - Hotel Database.
--- 
+-- Using SQL queries create Hotel database with the following entities:
+    • Employees (Id, FirstName, LastName, Title, Notes)
+    • Customers (AccountNumber, FirstName, LastName, PhoneNumber, EmergencyName, EmergencyNumber, Notes)
+    • RoomStatus (RoomStatus, Notes)
+    • RoomTypes (RoomType, Notes)
+    • BedTypes (BedType, Notes)
+    • Rooms (RoomNumber, RoomType, BedType, Rate, RoomStatus, Notes)
+    • Payments (Id, EmployeeId, PaymentDate, AccountNumber, FirstDateOccupied, LastDateOccupied, TotalDays, AmountCharged, TaxRate, TaxAmount, PaymentTotal, Notes)
+    • Occupancies (Id, EmployeeId, DateOccupied, AccountNumber, RoomNumber, RateApplied, PhoneCharge, Notes)
+   Set most appropriate data types for each column. Set primary key to each table. Populate each table with only 3 records. Make sure the columns that are present in 2 tables would be of the same data type. Consider which fields are always required and which are optional. Submit your CREATE TABLE and INSERT statements as Run queries & check DB.
 */
 CREATE DATABASE Hotel
 
@@ -315,7 +325,7 @@ CREATE TABLE Employees (Id INT PRIMARY KEY IDENTITY,
                         FirstName VARCHAR(50) NOT NULL,
                         LastName VARCHAR(50) NOT NULL,
                         Title VARCHAR(50) NOT NULL,
-						Notes TEXT)
+                        Notes TEXT)
 
 CREATE TABLE Customers (AccountNumber INT NOT NULL,
                         FirstName VARCHAR(50) NOT NULL,
@@ -400,3 +410,142 @@ INSERT INTO Occupancies (EmployeeId, DateOccupied, AccountNumber, RoomNumber, Ra
     VALUES (1, GETDATE(), 1, 1, 0.3, 0.1, NULL),
            (2, GETDATE(), 2, 2, 0.2, 0.2, NULL),
            (3, GETDATE(), 3, 3, 0.1, 0.3, NULL)
+
+
+/* Problem 16 - Create SoftUni Database.
+-- Now create bigger database called SoftUni. You will use same database in the future tasks. It should hold information about
+    • Towns (Id, Name)
+    • Addresses (Id, AddressText, TownId)
+    • Departments (Id, Name)
+    • Employees (Id, FirstName, MiddleName, LastName, JobTitle, DepartmentId, HireDate, Salary, AddressId)
+   Id columns are auto incremented starting from 1 and increased by 1 (1, 2, 3, 4…). Make sure you use appropriate data types for each column. Add primary and foreign keys as constraints for each table. Use only SQL queries. Consider which fields are always required and which are optional.
+*/
+CREATE DATABASE SoftUni
+
+USE SoftUni
+GO
+
+CREATE TABLE Towns (Id INT PRIMARY KEY IDENTITY, 
+                    Name VARCHAR(50) NOT NULL)
+
+CREATE TABLE Addresses (Id INT PRIMARY KEY IDENTITY,
+                        AddressText VARCHAR(50) NOT NULL,
+                        TownId INT FOREIGN KEY (TownId) REFERENCES Towns(Id))
+
+CREATE TABLE Departments (Id INT PRIMARY KEY IDENTITY,
+                          Name VARCHAR(50) NOT NULL)
+
+CREATE TABLE Employees (Id INT PRIMARY KEY IDENTITY, 
+                        FirstName VARCHAR(50) NOT NULL, 
+                        MiddleName VARCHAR(50) NOT NULL, 
+                        LastName VARCHAR(50) NOT NULL, 
+                        JobTitle VARCHAR(50) NOT NULL, 
+                        DepartmentId INT FOREIGN KEY (DepartmentId) REFERENCES Departments(Id), 
+                        HireDate DATE NOT NULL, 
+                        Salary MONEY NOT NULL, 
+                        AddressId INT FOREIGN KEY (AddressId) REFERENCES Addresses(Id))
+
+
+/* Problem 17 - Backup Database. 
+-- Backup the database SoftUni from the previous tasks into a file named “softuni-backup.bak”. Delete your database from SQL Server Management Studio. Then restore the database from the created backup.
+*/
+DECLARE @BakFilePath AS NVARCHAR(100) = 'D:\softuni-backup.Bak';
+
+BACKUP DATABASE SoftUni
+	TO DISK  = @BakFilePath
+	WITH FORMAT,
+      NAME = 'Full Backup of SoftUni';
+
+DROP DATABASE SoftUni
+
+RESTORE DATABASE SoftUni
+	FROM DISK = @BakFilePath
+
+
+/* Problem 18 - Basic Insert. 
+-- Use the SoftUni database and insert some data using SQL queries.
+    • Towns: Sofia, Plovdiv, Varna, Burgas
+    • Departments: Engineering, Sales, Marketing, Software Development, Quality Assurance
+    • Employees:
+   |---------------------------------------------------------------------------------------|
+   | Name	                 Job Title	       Department             Hire Date	   Salary  |
+   |---------------------------------------------------------------------------------------|
+   | Ivan Ivanov Ivanov	   | .NET Developer  | Software Development	| 01/02/2013 | 3500.00 |
+   | Petar Petrov Petrov   | Senior Engineer | Engineering          | 02/03/2004 | 4000.00 |
+   | Maria Petrova Ivanova | Intern	         | Quality Assurance    | 28/08/2016 | 525.25  |
+   | Georgi Teziev Ivanov  | CEO             | Sales                | 09/12/2007 | 3000.00 |
+   | Peter Pan Pan         | Intern          | Marketing            | 28/08/2016 | 599.88  |
+   |---------------------------------------------------------------------------------------|
+*/
+USE SoftUni
+
+INSERT INTO Towns (Name) 
+	VALUES ('Sofia'), ('Plovdiv'), ('Varna'), ('Bugrgas')
+
+INSERT INTO Departments (Name)
+	VALUES ('Engineering'), ('Sales'), ('Marketing'), ('Software Development'), ('Quality Assurance')
+
+INSERT INTO Employees (FirstName, MiddleName, LastName, JobTitle, DepartmentId, HireDate, Salary)
+    VALUES ('Ivan', 'Ivanov', 'Ivanov', '.NET Developer', 4, '01/02/2013', 3500.00),
+           ('Petar', 'Petrov', 'Petrov', 'Senior Engineer', 1, '02/03/2004', 4000.00),
+           ('Maria', 'Petrova', 'Ivanova', 'Intern', 5,  '08/28/2016', 525.25),
+           ('Georgi', 'Teziev', 'Ivanov', 'CEO', 2, '09/12/2007', 3000.00),
+           ('Peter', 'Pan', 'Pan', 'Intern', 3, '08/28/2016', 599.88)
+
+
+/* Problem 19 - Basic Select All Fields. 
+-- Use the SoftUni database and first select all records from the Towns, then from Departments and finally from Employees table. Use SQL queries and submit them to Judge at once. Submit your query statements as Prepare DB & Run queries.
+*/
+SELECT * FROM Towns
+SELECT * FROM Departments
+SELECT * FROM Employees
+
+
+/* Problem 20 - Basic Select All Fields and Order Them. 
+-- Modify queries from previous problem by sorting:
+    • Towns - alphabetically by name
+    • Departments - alphabetically by name
+    • Employees - descending by salary
+   Submit your query statements as Prepare DB & Run queries.
+*/
+SELECT * FROM Towns ORDER BY Name
+SELECT * FROM Departments ORDER BY Name
+SELECT * FROM Employees ORDER BY Salary DESC
+
+
+/* Problem 21 - Basic Select Some Fields.
+-- Modify queries from previous problem to show only some of the columns. For table:
+    • Towns – Name
+    • Departments – Name
+    • Employees – FirstName, LastName, JobTitle, Salary
+   Keep the ordering from the previous problem. Submit your query statements as Prepare DB & Run queries.
+*/
+SELECT Name FROM Towns ORDER BY Name
+SELECT Name FROM Departments ORDER BY Name
+SELECT FirstName, LastName, JobTitle, Salary FROM Employees ORDER BY Salary DESC
+
+
+/* Problem 22 - Increase Employees Salary
+-- Use SoftUni database and increase the salary of all employees by 10%. Then show only Salary column for all in the Employees table. Submit your query statements as Prepare DB & Run queries.
+*/
+UPDATE Employees 
+	SET Salary *= 1.10
+
+SELECT Salary From Employees
+
+
+/* Problem 23 - Decrease Tax Rate. 
+-- Use Hotel database and decrease tax rate by 3% to all payments. Then select only TaxRate column from the Payments table. Submit your query statements as Prepare DB & Run queries.
+*/
+USE Hotel
+
+UPDATE Payments
+	SET TaxRate *= 0.97
+
+SELECT TaxRate FROM Payments
+
+
+/* Problem 24 - Delete All Records. 
+-- Use Hotel database and delete all records from the Occupancies table. Use SQL query. Submit your query statements as Run skeleton, run queries & check DB.
+*/
+TRUNCATE TABLE Occupancies
