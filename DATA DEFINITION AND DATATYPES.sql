@@ -147,9 +147,9 @@ ALTER TABLE Users
 	DROP CONSTRAINT PK_Users
 
 ALTER TABLE Users
-	ADD CONSTRAINT PK_Users PRIMARY KEY (Id),
-		CONSTRAINT UC_Username UNIQUE (Username),
-		CHECK (LEN(Username) >= 3)
+    ADD CONSTRAINT PK_Users PRIMARY KEY (Id),
+        CONSTRAINT UC_Username UNIQUE (Username),
+        CHECK (LEN(Username) >= 3)
 
 
 /* Problem 13 - Movies Database.
@@ -188,29 +188,117 @@ CREATE TABLE Movies (Id INT PRIMARY KEY IDENTITY,
                      Notes TEXT)
 
 INSERT INTO Directors (DirectorName, Notes)
-	VALUES ('Dir name', 'First note'), 
+    VALUES ('Dir name', 'First note'), 
            ('Another director', NULL),
            ('Third director', 'Random note'),
            ('Fourth director', NULL),
            ('Fifth director', NULL)
 
 INSERT INTO Genres (GenreName, Notes)
-	VALUES ('First genre name', 'First note'),
+    VALUES ('First genre name', 'First note'),
            ('Second genre name', 'Second note'),
            ('Third genre name', 'Third note'),
            ('Fourth genre name', 'Fourth note'),
            ('Fifth genre name', 'Fifth note')
 
 INSERT INTO Categories (CategoryName, Notes)
-	VALUES ('First category name', 'First note'),
+    VALUES ('First category name', 'First note'),
            ('Second category name', 'Second note'),
            ('Third category name', 'Third note'),
            ('Fourth category name', 'Fourth note'),
            ('Fifth category name', 'Fifth note')
 
 INSERT INTO Movies (Title, DirectorId, CopyrightYear, Length, GenreId, CategoryId, Rating, Notes)
-	VALUES ('First title', 1, GETDATE(), '11:24:44', 1, 1, 10, 'First note'),
+    VALUES ('First title', 1, GETDATE(), '11:24:44', 1, 1, 10, 'First note'),
            ('Second title', 2, GETDATE(), '12:24:44', 2, 2, 9, 'Second note'),
            ('Third title', 3, GETDATE(), '13:24:44', 3, 3, 8, 'Third note'),
            ('Fourth title', 4, GETDATE(), '14:24:44', 4, 4, 7, NULL),
            ('Fifth title', 5, GETDATE(), '15:24:44', 5, 5, 6, 'Fourth note')
+
+
+/* Problem 14 - Car Rental Database.
+-- Using SQL queries create CarRental database with the following entities:
+    • Categories (Id, CategoryName, DailyRate, WeeklyRate, MonthlyRate, WeekendRate)
+    • Cars (Id, PlateNumber, Manufacturer, Model, CarYear, CategoryId, Doors, Picture, Condition, Available)
+    • Employees (Id, FirstName, LastName, Title, Notes)
+    • Customers (Id, DriverLicenceNumber, FullName, Address, City, ZIPCode, Notes)
+    • RentalOrders (Id, EmployeeId, CustomerId, CarId, TankLevel, KilometrageStart, KilometrageEnd, TotalKilometrage, StartDate, EndDate, TotalDays, RateApplied, TaxRate, OrderStatus, Notes)
+   Set most appropriate data types for each column. Set primary key to each table. Populate each table with only 3 records. Make sure the columns that are present in 2 tables would be of the same data type. Consider which fields are always required and which are optional. Submit your CREATE TABLE and INSERT statements as Run queries & check DB.
+*/
+CREATE DATABASE CarRental
+
+USE CarRental
+GO
+
+CREATE TABLE Categories (Id INT PRIMARY KEY IDENTITY,
+                         CategoryName VARCHAR(50) NOT NULL,
+                         DailyRate SMALLMONEY NOT NULL,
+                         WeeklyRate SMALLMONEY NOT NULL,
+						 MonthlyRate SMALLMONEY NOT NULL,
+						 WeekendRate SMALLMONEY NOT NULL)
+
+CREATE TABLE Cars (Id INT PRIMARY KEY IDENTITY,
+                   PlateNumber VARCHAR(8) NOT NULL,
+                   Manufacturer VARCHAR(50) NOT NULL,
+                   Model VARCHAR(50) NOT NULL,
+                   CarYear DATE NOT NULL,
+                   CategoryId INT FOREIGN KEY (CategoryId) REFERENCES Categories(Id),
+                   Doors INT NOT NULL,
+                   Picture VARBINARY,
+                   Condition VARCHAR(50),
+                   Available BIT NOT NULL)
+		   	
+CREATE TABLE Employees (Id INT PRIMARY KEY IDENTITY,
+                        FirstName VARCHAR(50) NOT NULL,
+                        LastName VARCHAR(50) NOT NULL,
+                        Title VARCHAR(50),
+                        Notes TEXT)
+
+CREATE TABLE Customers (Id INT PRIMARY KEY IDENTITY,
+                        DriverLicenceNumber INT NOT NULL,
+                        FullName VARCHAR(50) NOT NULL,
+                        Address TEXT,
+                        City VARCHAR(50),
+                        ZIPCode INT,
+                        Notes TEXT)
+
+CREATE TABLE RentalOrders (Id INT PRIMARY KEY IDENTITY,
+                           EmployeeId INT FOREIGN KEY (EmployeeId) REFERENCES Employees(Id) NOT NULL, 
+                           CustomerId INT FOREIGN KEY (CustomerId) REFERENCES Customers(Id) NOT NULL, 
+                           CarId INT FOREIGN KEY (CarId) REFERENCES Cars(Id) NOT NULL, 
+                           TankLevel INT CHECK (TankLevel <= 100 AND TankLevel >= 0),
+                           KilometrageStart INT,
+                           KilometrageEnd INT, 
+                           TotalKilometrage INT, 
+                           StartDate DATE NOT NULL, 
+                           EndDate DATE NOT NULL, 
+                           TotalDays INT NOT NULL, 
+                           RateApplied SMALLMONEY, 
+                           TaxRate SMALLMONEY, 
+                           OrderStatus BIT NOT NULL, 
+                           Notes TEXT)
+
+INSERT INTO Categories (CategoryName, DailyRate,WeeklyRate, MonthlyRate, WeekendRate)
+    VALUES ('First category name', 10.00, 70.00, 300.00, 20.00),
+           ('Second category name', 20.00, 140.00, 600.00, 40.00),
+           ('Third category name', 30.00, 210.00, 900.00, 80.00)
+
+INSERT INTO Cars (PlateNumber, Manufacturer, Model, CarYear, CategoryId, Doors, Picture, Condition, Available)
+    VALUES ('CA0123KN', 'MBW', 'E36', '1997/11/11', 1, 5, 1024, 'old', 0),
+           ('CB0123BN', 'Mergel', 'C240', '2007/12/12', 2, 5, 2048, 'normal', 1),
+           ('CA0123FN', 'Jag', 'C', '2018/01/01', 3, 5, 4096, 'new', 0)
+
+INSERT INTO Employees (FirstName, LastName, Title, Notes)
+    VALUES ('Elvis', 'Arabadjiyski', 'Manager', NULL),
+           ('Webi', 'Dimitrovi4', 'Worker', 'What?'),
+           ('Go6ko', 'Go6ev', 'Boss', 'Steve austin what?')
+
+INSERT INTO Customers (DriverLicenceNumber, FullName, Address, City, ZIPCode, Notes)
+    VALUES (0123456, 'Customer name', 'Bulgaria ZHK.Dianabad', 'Sofia', 1172, NULL),
+           (0123456, 'Customer name2', 'Friedrichstr. 123', '10117 Berlin', NULL, NULL),
+           (0123456, 'Customer name3', 'USA', 'NY', 10001, 'NY Note bro')
+
+INSERT INTO RentalOrders (EmployeeId, CustomerId, CarId, TankLevel, KilometrageStart, KilometrageEnd, TotalKilometrage, StartDate, EndDate, TotalDays, RateApplied, TaxRate, OrderStatus, Notes)
+VALUES (1 , 1 , 1 ,54 ,10 , 110, 100, GETDATE(), GETDATE() + 1, 1, 1.4, 44, 1, 'Just note'),
+       (2 , 2 , 2 ,44 ,20 , 110, 90, GETDATE(), GETDATE() + 2, 2, 2.4, 34, 0, 'Just note2'),
+       (3 , 3 , 3 ,34 ,30 , 110, 80, GETDATE(), GETDATE() + 3, 3, 3.4, 24, 0, 'Just note3')
