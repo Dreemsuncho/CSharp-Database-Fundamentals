@@ -107,9 +107,34 @@ CREATE TABLE Users (Id BIGINT PRIMARY KEY IDENTITY CHECK (Id <	92233720368547758
 INSERT INTO Users (Username, Password, ProfilePicture, LastLoginTime, IsDeleted)
     VALUES ('Elvis', '123321', NULL, '2017/09/21 22:43:14', 0),
            ('Go6o', 'Pass', 899, '2017/09/21 21:43:14', 1),
-		   ('Kiro', 'Pass123', 0, '2007/02/11 21:43:14', 0),
+	       ('Kiro', 'Pass123', 0, '2007/02/11 21:43:14', 0),
            ('Gri6o', 'dasdas123asdasd', 900, '2011/11/11 01:23:14', 1),
            ('Ti6o', '123das123', 900, '2021/12/21 02:33:44', 1)
 
 
-		   
+/* Problem 9 - Change Primary Key.
+-- Using SQL queries modify table Users from the previous task. First remove current primary key then create new primary key that would be the combination of fields Id and Username.
+*/
+ALTER TABLE Users
+	DROP CONSTRAINT PK__Users__3214EC074B2A0FED
+
+ALTER TABLE Users
+	ADD PRIMARY KEY (Id, Username)
+
+/* Problem 10 - Add Check Constraint.
+-- Using SQL queries modify table Users. Add check constraint to ensure that the values in the Password field are at least 5 symbols long. 
+*/
+UPDATE Users
+	SET Password = '01234'
+	WHERE (LEN(Password) < 5)
+
+ALTER TABLE Users
+	ADD CONSTRAINT CK__Password__Min
+	CHECK (LEN(Password) >= 5)
+
+
+/* Problem 11 - Set Default Value of a Field.
+-- Using SQL queries modify table Users. Make the default value of LastLoginTime field to be the current time.
+*/
+ALTER TABLE Users
+	ADD  DEFAULT(GETDATE()) FOR LastLoginTime
