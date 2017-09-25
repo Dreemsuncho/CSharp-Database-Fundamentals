@@ -452,9 +452,9 @@ CREATE TABLE Employees (Id INT PRIMARY KEY IDENTITY,
 DECLARE @BakFilePath AS NVARCHAR(100) = 'D:\softuni-backup.Bak';
 
 BACKUP DATABASE SoftUni
-	TO DISK  = @BakFilePath
-	WITH FORMAT,
-      NAME = 'Full Backup of SoftUni';
+    TO DISK  = @BakFilePath
+    WITH FORMAT,
+    NAME = 'Full Backup of SoftUni';
 
 DROP DATABASE SoftUni
 
