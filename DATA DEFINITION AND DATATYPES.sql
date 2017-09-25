@@ -97,7 +97,7 @@ INSERT INTO People (Picture, Height, Weight, Gender, Birthdate, Biography)
     • IsDeleted – shows if the user deleted his/her profile. Possible states are true or false.
    Make Id primary key. Populate the table with exactly 5 records. Submit your CREATE and INSERT statements as Run queries & check DB.
 */
-CREATE TABLE Users (Id BIGINT PRIMARY KEY IDENTITY CHECK (Id <	9223372036854775808 - 1),
+CREATE TABLE Users (Id BIGINT CONSTRAINT PK_Users PRIMARY KEY IDENTITY CHECK (Id <	9223372036854775808 - 1),
                     Username VARCHAR(30) UNIQUE NOT NULL,
                     Password VARCHAR(26) NOT NULL,
                     ProfilePicture VARBINARY CHECK (DATALENGTH(ProfilePicture) <= 900),
@@ -107,7 +107,7 @@ CREATE TABLE Users (Id BIGINT PRIMARY KEY IDENTITY CHECK (Id <	92233720368547758
 INSERT INTO Users (Username, Password, ProfilePicture, LastLoginTime, IsDeleted)
     VALUES ('Elvis', '123321', NULL, '2017/09/21 22:43:14', 0),
            ('Go6o', 'Pass', 899, '2017/09/21 21:43:14', 1),
-	       ('Kiro', 'Pass123', 0, '2007/02/11 21:43:14', 0),
+           ('Kiro', 'Pass123', 0, '2007/02/11 21:43:14', 0),
            ('Gri6o', 'dasdas123asdasd', 900, '2011/11/11 01:23:14', 1),
            ('Ti6o', '123das123', 900, '2021/12/21 02:33:44', 1)
 
@@ -116,10 +116,11 @@ INSERT INTO Users (Username, Password, ProfilePicture, LastLoginTime, IsDeleted)
 -- Using SQL queries modify table Users from the previous task. First remove current primary key then create new primary key that would be the combination of fields Id and Username.
 */
 ALTER TABLE Users
-	DROP CONSTRAINT PK__Users__3214EC074B2A0FED
-
+	DROP CONSTRAINT PK_Users
+	
 ALTER TABLE Users
-	ADD PRIMARY KEY (Id, Username)
+	ADD CONSTRAINT PK_Users PRIMARY KEY (Id, Username)
+
 
 /* Problem 10 - Add Check Constraint.
 -- Using SQL queries modify table Users. Add check constraint to ensure that the values in the Password field are at least 5 symbols long. 
@@ -129,8 +130,7 @@ UPDATE Users
 	WHERE (LEN(Password) < 5)
 
 ALTER TABLE Users
-	ADD CONSTRAINT CK__Password__Min
-	CHECK (LEN(Password) >= 5)
+	ADD CONSTRAINT CK__Password__Min CHECK (LEN(Password) >= 5)
 
 
 /* Problem 11 - Set Default Value of a Field.
@@ -138,3 +138,79 @@ ALTER TABLE Users
 */
 ALTER TABLE Users
 	ADD  DEFAULT(GETDATE()) FOR LastLoginTime
+
+
+/* Problem 12 - Set Unique Field.
+-- Using SQL queries modify table Users. Remove Username field from the primary key so only the field Id would be primary key. Now add unique constraint to the Username field to ensure that the values there are at least 3 symbols long.
+*/
+ALTER TABLE Users
+	DROP CONSTRAINT PK_Users
+
+ALTER TABLE Users
+	ADD CONSTRAINT PK_Users PRIMARY KEY (Id),
+		CONSTRAINT UC_Username UNIQUE (Username),
+		CHECK (LEN(Username) >= 3)
+
+
+/* Problem 13 - Movies Database.
+-- Using SQL queries create Movies database with the following entities:
+    • Directors (Id, DirectorName, Notes)
+    • Genres (Id, GenreName, Notes)
+    • Categories (Id, CategoryName, Notes)
+    • Movies (Id, Title, DirectorId, CopyrightYear, Length, GenreId, CategoryId, Rating, Notes)
+    Set most appropriate data types for each column. Set primary key to each table. Populate each table with exactly 5 records. Make sure the columns that are present in 2 tables would be of the same data type. Consider which fields are always required and which are optional. Submit your CREATE TABLE and INSERT statements as Run queries & check DB.
+*/
+CREATE DATABASE Movies
+
+USE Movies 
+GO
+
+CREATE TABLE Directors (Id INT PRIMARY KEY IDENTITY,
+                        DirectorName VARCHAR(55) NOT NULL, 
+                        Notes TEXT)
+
+CREATE TABLE Genres (Id INT PRIMARY KEY IDENTITY,
+                     GenreName VARCHAR(55) NOT NULL,
+                     Notes TEXT)
+
+CREATE TABLE Categories (Id INT PRIMARY KEY IDENTITY,
+                         CategoryName VARCHAR(55) NOT NULL,
+                         Notes TEXT)
+
+CREATE TABLE Movies (Id INT PRIMARY KEY IDENTITY,
+                     Title VARCHAR(55) NOT NULL,
+                     DirectorId INT FOREIGN KEY (DirectorId) REFERENCES Directors(Id) NOT NULL,
+                     CopyrightYear DATE,
+                     Length TIME,
+                     GenreId INT FOREIGN KEY (GenreId) REFERENCES Genres(Id) NOT NULL,
+                     CategoryId INT FOREIGN KEY (CategoryId) REFERENCES Categories(Id) NOT NULL,
+                     Rating INT,
+                     Notes TEXT)
+
+INSERT INTO Directors (DirectorName, Notes)
+	VALUES ('Dir name', 'First note'), 
+           ('Another director', NULL),
+           ('Third director', 'Random note'),
+           ('Fourth director', NULL),
+           ('Fifth director', NULL)
+
+INSERT INTO Genres (GenreName, Notes)
+	VALUES ('First genre name', 'First note'),
+           ('Second genre name', 'Second note'),
+           ('Third genre name', 'Third note'),
+           ('Fourth genre name', 'Fourth note'),
+           ('Fifth genre name', 'Fifth note')
+
+INSERT INTO Categories (CategoryName, Notes)
+	VALUES ('First category name', 'First note'),
+           ('Second category name', 'Second note'),
+           ('Third category name', 'Third note'),
+           ('Fourth category name', 'Fourth note'),
+           ('Fifth category name', 'Fifth note')
+
+INSERT INTO Movies (Title, DirectorId, CopyrightYear, Length, GenreId, CategoryId, Rating, Notes)
+	VALUES ('First title', 1, GETDATE(), '11:24:44', 1, 1, 10, 'First note'),
+           ('Second title', 2, GETDATE(), '12:24:44', 2, 2, 9, 'Second note'),
+           ('Third title', 3, GETDATE(), '13:24:44', 3, 3, 8, 'Third note'),
+           ('Fourth title', 4, GETDATE(), '14:24:44', 4, 4, 7, NULL),
+           ('Fifth title', 5, GETDATE(), '15:24:44', 5, 5, 6, 'Fourth note')
