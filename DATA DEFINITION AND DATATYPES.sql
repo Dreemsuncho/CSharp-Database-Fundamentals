@@ -234,8 +234,8 @@ CREATE TABLE Categories (Id INT PRIMARY KEY IDENTITY,
                          CategoryName VARCHAR(50) NOT NULL,
                          DailyRate SMALLMONEY NOT NULL,
                          WeeklyRate SMALLMONEY NOT NULL,
-						 MonthlyRate SMALLMONEY NOT NULL,
-						 WeekendRate SMALLMONEY NOT NULL)
+                         MonthlyRate SMALLMONEY NOT NULL,
+                         WeekendRate SMALLMONEY NOT NULL)
 
 CREATE TABLE Cars (Id INT PRIMARY KEY IDENTITY,
                    PlateNumber VARCHAR(8) NOT NULL,
@@ -302,3 +302,4 @@ INSERT INTO RentalOrders (EmployeeId, CustomerId, CarId, TankLevel, KilometrageS
 VALUES (1 , 1 , 1 ,54 ,10 , 110, 100, GETDATE(), GETDATE() + 1, 1, 1.4, 44, 1, 'Just note'),
        (2 , 2 , 2 ,44 ,20 , 110, 90, GETDATE(), GETDATE() + 2, 2, 2.4, 34, 0, 'Just note2'),
        (3 , 3 , 3 ,34 ,30 , 110, 80, GETDATE(), GETDATE() + 3, 3, 3.4, 24, 0, 'Just note3')
+
