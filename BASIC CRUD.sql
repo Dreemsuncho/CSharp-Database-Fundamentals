@@ -5,12 +5,11 @@
 
 
 -- Part I – Queries for SoftUni Database.
+USE SoftUni
 
 /* Problem 1 - Find All Information About Departments.
 -- Write a SQL query to find all available information about the Departments. Submit your query statements as Prepare DB & run queries.
 */
-USE SoftUni
-
 SELECT * FROM Departments
 
 
@@ -153,12 +152,11 @@ SELECT Salary FROM Employees
 
 
 -- Part II – Queries for Geography Database.
+USE Geography
 
 /* Problem 21 - All Montain Peaks.
 -- Display all mountain peaks in alphabetical order. Submit your query statements as Prepare DB & run queries.
 */
-USE Geography
-
 SELECT PeakName FROM Peaks
 	ORDER BY PeakName
 
@@ -181,11 +179,10 @@ SELECT CountryName, CountryCode, IIF(CurrencyCode = 'EUR', 'Euro', 'Not Euro') A
 
 
 -- Part III – Queries for Diablo Database.
+USE Diablo
 
 /* Problem 24 - All Diablo Characters.
 -- Display all characters in alphabetical order. Submit your query statements as Prepare DB & run queries.
 */
-USE Diablo
-
 SELECT Name FROM Characters
 	ORDER BY Name
