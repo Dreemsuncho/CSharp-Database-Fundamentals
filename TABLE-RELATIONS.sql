@@ -94,7 +94,7 @@ ALTER TABLE Models
    |------------------|---------------------| 3         | 103	 |
                                             | 2         | 102	 |
                                             | 2         | 103	 |
-											|--------------------|
+                                            |--------------------|
    Insert the data from the example above.
    Add primary keys and foreign keys. Have in mind that table StudentsExams should have a composite primary key.
 */
