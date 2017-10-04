@@ -80,3 +80,58 @@ ALTER TABLE Manufacturers
 ALTER TABLE Models
     ADD PRIMARY KEY (ModelID),
         FOREIGN KEY(ManufacturerID) REFERENCES Manufacturers(ManufacturerID)
+
+
+/* Problem 3 - Many-To-Many Relationship.
+-- Create three tables as follows. Use appropriate data types.
+   |------------------|---------------------|--------------------|
+   |     Students     |         Exams       |     StudentsExams  |
+   |------------------|---------------------|--------------------|
+   | StudentID | Name | ExamID | Name       | StudentID | ExamID |
+   | 1         | Mila | 101    | SpringMVC  | 1         | 101	 |
+   | 2         | Toni | 102    | Neo4j      | 1         | 102	 |
+   | 3         | Ron  | 103    | Oracle 11g | 2         | 101	 |
+   |------------------|---------------------| 3         | 103	 |
+                                            | 2         | 102	 |
+                                            | 2         | 103	 |
+											|--------------------|
+   Insert the data from the example above.
+   Add primary keys and foreign keys. Have in mind that table StudentsExams should have a composite primary key.
+*/
+CREATE TABLE Students (StudentID INT NOT NULL,
+                       Name VARCHAR(50))
+
+CREATE TABLE Exams (ExamID INT NOT NULL,
+                    Name VARCHAR(50))
+
+CREATE TABLE StudentsExams (StudentID INT NOT NULL,
+                            ExamID INT NOT NULL)
+
+ALTER TABLE Students
+	ADD PRIMARY KEY (StudentID)
+
+ALTER TABLE Exams
+	ADD PRIMARY KEY (ExamID)
+
+ALTER TABLE StudentsExams
+    ADD PRIMARY KEY (StudentID, ExamID),
+        FOREIGN KEY (StudentID) REFERENCES Students(StudentID),
+        FOREIGN KEY (EXamID) REFERENCES Exams(ExamID)
+
+INSERT INTO Students (StudentID, Name)
+    VALUES (1, 'Mila'),
+           (2, 'Toni'),
+           (3, 'Ron')
+
+INSERT INTO Exams (ExamID, Name)
+    VALUES (101,'SpringMVC'),
+           (102, 'Neo4j'),
+           (103, 'Oracle 11g')
+
+INSERT INTO StudentsExams (StudentID, ExamID)
+    VALUES (1, 101),
+           (1, 102),
+           (2, 101),
+           (3, 103),
+           (2, 102),
+           (2, 103)
