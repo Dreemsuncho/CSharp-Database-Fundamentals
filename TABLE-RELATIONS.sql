@@ -42,7 +42,7 @@ ALTER TABLE Persons
    |------------------------------------|----------------------------------------|
    |              Models                |              Manufacturers             |
    |------------------------------------|----------------------------------------|
-   | ModelID | Name	   | ManufacturerID | ManufacturerID | Name  | EstablishedOn |
+   | ModelID | Name    | ManufacturerID | ManufacturerID | Name  | EstablishedOn |
    | 101     | X1      | 1              | 1              | BMW   | 07/03/1916    |
    | 102     | i6      | 1              | 2              | Tesla | 01/01/2003    |
    | 103     | Model S | 2              | 3              | Lada  | 01/05/1966    |
@@ -61,7 +61,7 @@ CREATE TABLE Manufacturers(ManufacturerID INT NOT NULL,
                            EstablishedON DATE)
 
 INSERT INTO Models(ModelID, Name, ManufacturerID)
-	VALUES (101, 'X1', 1),
+    VALUES (101, 'X1', 1),
            (102, 'i6', 1),
            (103, 'Model S', 2),
            (104, 'Model X', 2),	
