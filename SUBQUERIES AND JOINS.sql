@@ -224,9 +224,10 @@ FROM
 	(
 		SELECT ContinentCode, 
 		       CurrencyCode, 
-			   COUNT(CurrencyCode) AS CurrencyUsage 
+               COUNT(CurrencyCode) AS CurrencyUsage 
 		FROM Countries
-		GROUP BY ContinentCode, CurrencyCode
+		GROUP BY ContinentCode,
+                 CurrencyCode
 	) AS Sub2
 ) AS Sub1
 WHERE Rank = 1 AND CurrencyUsage > 1
@@ -263,16 +264,16 @@ SELECT TOP 5 c.CountryName,
 -- For each country, find the name and elevation of the highest peak, along with its mountain. When no peaks are available in some country, display elevation 0, "(no highest peak)" as peak name and "(no mountain)" as mountain name. When multiple peaks in some country have the same elevation, display all of them. Sort the results by country name alphabetically, then by highest peak name alphabetically. Limit only the first 5 rows.
 */
 SELECT TOP 5 Country, 
-       ISNULL(PeakName, '(no highest peak)') AS [Highest Peak Name],
-	   ISNULL(Elevation, 0) AS [Highest Peak Elevation],
-	   ISNULL(MountainRange, '(no mountain)') AS Mountain
+	ISNULL(PeakName, '(no highest peak)') AS [Highest Peak Name],
+	ISNULL(Elevation, 0) AS [Highest Peak Elevation],
+	ISNULL(MountainRange, '(no mountain)') AS Mountain
 FROM 
 (
 	SELECT c.CountryName AS Country, 
            p.PeakName, 
-		   MAX(p.Elevation) AS Elevation,
-		   m.MountainRange,
-		   DENSE_RANK() OVER(PARTITION BY (c.CountryName) ORDER BY MAX(p.Elevation) DESC) AS Rank
+           MAX(p.Elevation) AS Elevation,
+           m.MountainRange,
+           DENSE_RANK() OVER(PARTITION BY (c.CountryName) ORDER BY MAX(p.Elevation) DESC) AS Rank
 	FROM 
 	(
 		Countries c
