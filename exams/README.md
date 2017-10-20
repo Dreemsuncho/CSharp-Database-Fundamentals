@@ -1,0 +1,2 @@
+#### Exam-01. Database Fundamentals MSSQL – Washing Machine Service
+Your task is to implement Washing Machine Service database based on the specs given below. Database will include information about broken machines which will be distributed to mechanics through so called “jobs”. Each mechanic may have several jobs and for each job he/she can require some parts. To let the mechanic get whats needed he/she has to make order for a particular part also specifying how many of it will be needed (specifying quantity).
