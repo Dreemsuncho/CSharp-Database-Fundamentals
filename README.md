@@ -12,4 +12,4 @@ Databases are the standard way to use dynamic information in modern technologies
 During the course a practical team project will be developed that includes practical use of different DB servers (SQL Server, MySQL), data access platforms and technologies (ADO.NET, Entity Framework, etc.) and import and export to various formats for data (JSON, XML).
 
 <br/>   
-###### <p align="right">This course is provided by: [Software University](http://www.softuni.bg) <img width="15%" src="/misc/softuni-code-wizard.png"></p>
+###### This course is provided by: [Software University](http://www.softuni.bg) <img align="right" width="15%" src="/misc/softuni-code-wizard.png">
