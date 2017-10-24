@@ -1,23 +1,2 @@
-# Databases---MS-SQL-Server---september-2017
-
-### [Software University](http://www.softuni.bg) labs, exercises and exams
-
-
-#### Labs & Exercises
-
-* Data Definition and Datatypes
-* Basic Crud
-* Built-In Functions
-* Data Aggregation
-* Table Relations
-* Subqueries and Joins
-* Functions and Procedures
-* Triggers and Transactions
-* Additional Exercises
-
-
-#### Exams Database Fundamentals MSSQL
-
-* Washing Machine Service Exam - 24 Apr 2017
-* Bakery - 19 February 2017
-* Report Service (Final exam) - 22 Oct 2017
+# [Software University](http://www.softuni.bg) C# Databases Fundamentals - September 2017 ![Softuni Logo](combine.png)
+Databases are the standard way to use dynamic information in modern technologies, making them an integral part of almost every application. In the C # Database Fundamentals module you will be introduced to one of the most widely used Microsoft SQL Server database management systems. In the second part of the module, the focus is on the de facto standard for object-oriented data modeling in C # and .NET applications - the Entity Framework
