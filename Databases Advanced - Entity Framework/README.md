@@ -4,20 +4,7 @@
 
 
 #### Labs & Exercises
+* Fetching Resultsets with ADO.NET
+* Introduction to EntityFramework
 
-* Data Definition and Datatypes
-* Basic Crud
-* Built-In Functions
-* Data Aggregation
-* Table Relations
-* Subqueries and Joins
-* Functions and Procedures
-* Triggers and Transactions
-* Additional Exercises
-
-
-#### Exams Database Fundamentals MSSQL
-
-* Washing Machine Service Exam - 24 Apr 2017
-* Bakery - 19 February 2017
-* Report Service (Final exam) - 22 Oct 2017
+#### Exams

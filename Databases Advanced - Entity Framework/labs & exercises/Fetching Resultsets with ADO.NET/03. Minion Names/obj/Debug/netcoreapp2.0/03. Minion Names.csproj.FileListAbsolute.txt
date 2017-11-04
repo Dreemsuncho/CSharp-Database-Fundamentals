@@ -1,0 +1,11 @@
+D:\Education\Softuni\CSharp-Database-Fundamentals\Databases Advanced - Entity Framework\labs & exercises\Fetching Resultsets with ADO.NET\03. Minion Names\bin\Debug\netcoreapp2.0\03. Minion Names.deps.json
+D:\Education\Softuni\CSharp-Database-Fundamentals\Databases Advanced - Entity Framework\labs & exercises\Fetching Resultsets with ADO.NET\03. Minion Names\bin\Debug\netcoreapp2.0\03. Minion Names.runtimeconfig.json
+D:\Education\Softuni\CSharp-Database-Fundamentals\Databases Advanced - Entity Framework\labs & exercises\Fetching Resultsets with ADO.NET\03. Minion Names\bin\Debug\netcoreapp2.0\03. Minion Names.runtimeconfig.dev.json
+D:\Education\Softuni\CSharp-Database-Fundamentals\Databases Advanced - Entity Framework\labs & exercises\Fetching Resultsets with ADO.NET\03. Minion Names\bin\Debug\netcoreapp2.0\03. Minion Names.dll
+D:\Education\Softuni\CSharp-Database-Fundamentals\Databases Advanced - Entity Framework\labs & exercises\Fetching Resultsets with ADO.NET\03. Minion Names\bin\Debug\netcoreapp2.0\03. Minion Names.pdb
+D:\Education\Softuni\CSharp-Database-Fundamentals\Databases Advanced - Entity Framework\labs & exercises\Fetching Resultsets with ADO.NET\03. Minion Names\obj\Debug\netcoreapp2.0\03. Minion Names.csprojResolveAssemblyReference.cache
+D:\Education\Softuni\CSharp-Database-Fundamentals\Databases Advanced - Entity Framework\labs & exercises\Fetching Resultsets with ADO.NET\03. Minion Names\obj\Debug\netcoreapp2.0\03. Minion Names.csproj.CoreCompileInputs.cache
+D:\Education\Softuni\CSharp-Database-Fundamentals\Databases Advanced - Entity Framework\labs & exercises\Fetching Resultsets with ADO.NET\03. Minion Names\obj\Debug\netcoreapp2.0\03. Minion Names.AssemblyInfoInputs.cache
+D:\Education\Softuni\CSharp-Database-Fundamentals\Databases Advanced - Entity Framework\labs & exercises\Fetching Resultsets with ADO.NET\03. Minion Names\obj\Debug\netcoreapp2.0\03. Minion Names.AssemblyInfo.cs
+D:\Education\Softuni\CSharp-Database-Fundamentals\Databases Advanced - Entity Framework\labs & exercises\Fetching Resultsets with ADO.NET\03. Minion Names\obj\Debug\netcoreapp2.0\03. Minion Names.dll
+D:\Education\Softuni\CSharp-Database-Fundamentals\Databases Advanced - Entity Framework\labs & exercises\Fetching Resultsets with ADO.NET\03. Minion Names\obj\Debug\netcoreapp2.0\03. Minion Names.pdb

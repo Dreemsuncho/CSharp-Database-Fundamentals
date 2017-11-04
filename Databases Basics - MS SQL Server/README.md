@@ -17,7 +17,7 @@
 * Additional Exercises
 
 
-#### Exams Database Fundamentals MSSQL
+#### Exams
 
 * Washing Machine Service Exam - 24 Apr 2017
 * Bakery - 19 February 2017
