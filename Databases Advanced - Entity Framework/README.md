@@ -4,6 +4,7 @@
 
 
 #### Labs & Exercises
+
 * Fetching Resultsets with ADO.NET
 * Introduction to EntityFramework
 
