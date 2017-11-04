@@ -2,7 +2,7 @@
 
 Databases are the standard way to use dynamic information in modern technologies, making them an integral part of almost every application. In the C # Database Fundamentals module you will be introduced to one of the most widely used Microsoft SQL Server database management systems. In the second part of the module, the focus is on the de facto standard for object-oriented data modeling in C # and .NET applications - the Entity Framework
 
-## Module Courses
+## Module Courses:
 
 - ### Databases Basics MS SQL Server 
   - Intensive course basics of databases will introduce you to one of the most widely used database management systems (DBMS) used in the development of modern information systems - Microsoft SQL Server. The course focuses on relational modeling, data modeling with ER charts (tables and relational links) and SQL language handling (data mining, selection, projection, joining, aggregation, grouping, modification, deletion and insertion). Fundamental knowledge about ACID transactions and transaction processing and practical tips for adjusting productivity are provided.
