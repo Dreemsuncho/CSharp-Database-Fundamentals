@@ -31,6 +31,7 @@ namespace P15_RemoveTowns
                 context.SaveChanges();
 
                 Console.WriteLine("{0} address in {1} was deleted", addresses.Count(), townName);
+                //ss
             }
         }
     }

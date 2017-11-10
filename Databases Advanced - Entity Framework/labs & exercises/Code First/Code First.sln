@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.10
+MinimumVisualStudioVersion = 15.0.26124.0
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P01_HospitalDatabase", "P01_HospitalDatabase\P01_HospitalDatabase.csproj", "{21D5DA16-6231-4410-8488-8FFD3EA6A017}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalDatabaseStartup", "HospitalDatabaseStartup\HospitalDatabaseStartup.csproj", "{6D214FF3-86F4-421B-B4A1-F0CE6FB815A7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{21D5DA16-6231-4410-8488-8FFD3EA6A017}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21D5DA16-6231-4410-8488-8FFD3EA6A017}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21D5DA16-6231-4410-8488-8FFD3EA6A017}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21D5DA16-6231-4410-8488-8FFD3EA6A017}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D214FF3-86F4-421B-B4A1-F0CE6FB815A7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D214FF3-86F4-421B-B4A1-F0CE6FB815A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D214FF3-86F4-421B-B4A1-F0CE6FB815A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D214FF3-86F4-421B-B4A1-F0CE6FB815A7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2C9F1CC2-7F5D-4F4F-8CB5-78D9049EFDE1}
+	EndGlobalSection
+EndGlobal
