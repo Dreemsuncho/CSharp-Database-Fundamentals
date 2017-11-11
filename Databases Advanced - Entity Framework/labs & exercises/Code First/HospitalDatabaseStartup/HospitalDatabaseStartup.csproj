@@ -14,7 +14,7 @@
 </ItemGroup>
 
 <ItemGroup>
-  <ProjectReference Include="..\P01_HospitalDatabase\P01_HospitalDatabase.csproj" />
+  <ProjectReference Include="..\P03_SalesDatabase\P03_SalesDatabase.csproj" />
 </ItemGroup>
   
 </Project>

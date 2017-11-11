@@ -1,4 +1,4 @@
-﻿using P01_HospitalDatabase.Data;
+﻿using P03_SalesDatabase.Data;
 
 namespace HospitalDatabaseStartup
 {
@@ -6,7 +6,7 @@ namespace HospitalDatabaseStartup
     {
         static void Main()
         {
-            using (var context = new HospitalDbContext())
+            using (var context = new SalesDbContext())
             {
                 context.Database.EnsureCreated();
             }

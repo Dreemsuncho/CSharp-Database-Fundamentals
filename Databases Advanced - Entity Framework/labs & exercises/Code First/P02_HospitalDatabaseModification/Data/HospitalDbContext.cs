@@ -12,6 +12,7 @@ namespace P01_HospitalDatabase.Data
         public DbSet<Patient> Patients { get; set; }
         public DbSet<Medicament> Medicaments { get; set; }
         public DbSet<Diagnose> Diagnoses { get; set; }
+        public DbSet<Doctor> Doctors { get; set; }
         public DbSet<PatientMedicament> PatientMedicaments { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -55,6 +56,10 @@ namespace P01_HospitalDatabase.Data
                 visitation.HasOne<Patient>()
                     .WithMany(p => p.Visitations)
                     .HasForeignKey(v => v.PatientId);
+
+                visitation.HasOne<Doctor>()
+                    .WithMany(d => d.Visitations)
+                    .HasForeignKey(v => v.DoctorId);
             });
 
 
@@ -87,7 +92,7 @@ namespace P01_HospitalDatabase.Data
                 patientMedicament.HasKey(pm => new { pm.PatientId, pm.MedicamentId });
 
                 patientMedicament.HasOne<Patient>()
-                    .WithMany(m => m.Prescriptions)
+                    .WithMany(p=>p.Prescriptions)
                     .HasForeignKey(pm => pm.PatientId);
 
                 patientMedicament.HasOne<Medicament>()
