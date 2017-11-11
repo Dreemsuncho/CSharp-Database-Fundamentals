@@ -7,5 +7,6 @@
 
 * Fetching Resultsets with ADO.NET
 * Introduction to EntityFramework
+* Code First
 
 #### Exams
