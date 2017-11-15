@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HospitalDatabaseInitializer
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P03_SalesDatabase", "P03_SalesDatabase\P03_SalesDatabase.csproj", "{9326463C-5B6D-4270-8002-20F35E9040E9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P04-05_SalesDatabaseMigrations", "xixi\P04-05_SalesDatabaseMigrations.csproj", "{63C2E1F3-2658-445F-81BF-E6C6E523D520}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "P04-05_SalesDatabaseMigrations", "P04-05_SalesDatabaseMigrations\P04-05_SalesDatabaseMigrations.csproj", "{D632EE2F-3C7E-45B4-9085-6E61D2B5480B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{9326463C-5B6D-4270-8002-20F35E9040E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9326463C-5B6D-4270-8002-20F35E9040E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9326463C-5B6D-4270-8002-20F35E9040E9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{63C2E1F3-2658-445F-81BF-E6C6E523D520}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{63C2E1F3-2658-445F-81BF-E6C6E523D520}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{63C2E1F3-2658-445F-81BF-E6C6E523D520}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{63C2E1F3-2658-445F-81BF-E6C6E523D520}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D632EE2F-3C7E-45B4-9085-6E61D2B5480B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D632EE2F-3C7E-45B4-9085-6E61D2B5480B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D632EE2F-3C7E-45B4-9085-6E61D2B5480B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D632EE2F-3C7E-45B4-9085-6E61D2B5480B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
