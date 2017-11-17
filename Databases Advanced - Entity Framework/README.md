@@ -9,5 +9,6 @@
 * Introduction to EntityFramework
 * Code First
 * Entity Relations
+* Advanced Relations
 
 #### Exams
