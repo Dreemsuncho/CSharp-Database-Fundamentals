@@ -10,5 +10,6 @@
 * Code First
 * Entity Relations
 * Advanced Relations
+* Advanced Querying
 
 #### Exams
