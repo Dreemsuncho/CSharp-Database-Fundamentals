@@ -11,5 +11,6 @@
 * Entity Relations
 * Advanced Relations
 * Advanced Querying
+* Best Practices and Architecture
 
 #### Exams
