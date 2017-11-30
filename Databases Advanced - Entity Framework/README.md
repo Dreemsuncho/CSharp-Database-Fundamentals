@@ -12,5 +12,6 @@
 * Advanced Relations
 * Advanced Querying
 * Best Practices and Architecture
+* C# Auto Mapping Objects
 
 #### Exams
