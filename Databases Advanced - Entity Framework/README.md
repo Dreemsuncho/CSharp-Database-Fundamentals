@@ -13,5 +13,6 @@
 * Advanced Querying
 * Best Practices and Architecture
 * C# Auto Mapping Objects
+* External Format Processing
 
 #### Exams
