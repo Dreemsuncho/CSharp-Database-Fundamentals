@@ -14,5 +14,6 @@
 * Best Practices and Architecture
 * C# Auto Mapping Objects
 * External Format Processing
+* Workshop
 
 #### Exams
