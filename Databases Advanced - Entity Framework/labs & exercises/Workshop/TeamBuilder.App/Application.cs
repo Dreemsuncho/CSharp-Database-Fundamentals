@@ -17,9 +17,5 @@ namespace TeamBuilder.App
             var engine = new Engine(new CommandDispatcher());
             engine.Run();
         }
-
-        //TODO
-        //ShowEvent
-        //Shows details for given event.
     }
 }
