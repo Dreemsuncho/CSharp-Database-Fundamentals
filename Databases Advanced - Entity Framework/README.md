@@ -17,4 +17,4 @@
 * Workshop
 
 #### Exams
-* Instagraph Application
+* Instagraph App
