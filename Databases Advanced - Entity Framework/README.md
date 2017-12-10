@@ -17,4 +17,4 @@
 * Workshop
 
 #### Exams
-* Exam Preparation 1 - Instagraph
+* Instagraph Application
